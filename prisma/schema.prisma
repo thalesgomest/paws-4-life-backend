@@ -9,3 +9,57 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          Int @id @default(autoincrement())
+  name        String
+  email       String @unique
+  password    String
+  createdAt   DateTime @default(now())
+  posts       Post[]
+
+  @@map("users") 
+}
+
+model Post {
+  id            Int @id @default(autoincrement())
+  type          PostType
+  description   String
+  image         String
+  locationId    Int
+  location      PostLocation @relation(fields: [locationId], references: [id])
+  userId        Int
+  user          User @relation(fields: [userId], references: [id]) 
+  createdAt     DateTime @default(now())
+
+  @@map("posts")
+}
+
+enum PostType {
+  rescue
+  lost
+  other
+}
+
+model PostLocation {
+  id            Int @id @default(autoincrement())
+  latitude      Int
+  longitude     Int
+  posts         Post[]
+
+  @@map("posts_location")
+}
+
+model Ong {
+  id          Int @id @default(autoincrement())
+  name        String
+  email       String @unique
+  telephone   String?
+  address     String
+  site        String?
+  createdAt   DateTime @default(now())
+
+  @@map("ongs")
+}
+
+
