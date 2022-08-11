@@ -1,9 +1,14 @@
 import { Router } from 'express';
 import validadeSchemaMiddleware from '../middlewares/validateSchemaMiddleware.js';
 import { ongSchema } from '../schemas/ongSchema.js';
+import * as ongController from '../controllers/ongController.js';
 
-const authRouter = Router();
+const ongsRouter = Router();
 
-authRouter.post('/ong', validadeSchemaMiddleware(ongSchema));
+ongsRouter.post(
+	'/ong',
+	validadeSchemaMiddleware(ongSchema),
+	ongController.registerOng
+);
 
-export default authRouter;
+export default ongsRouter;
