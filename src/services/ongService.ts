@@ -15,3 +15,8 @@ export const create = async (ongData: OngData) => {
 	}
 	await ongRepository.insert(ongData);
 };
+
+export const getAll = async () => {
+	const ongs = await ongRepository.getAll();
+	return ongs;
+};

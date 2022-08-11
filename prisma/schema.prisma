@@ -43,8 +43,8 @@ enum PostType {
 
 model PostLocation {
   id            Int @id @default(autoincrement())
-  latitude      Int
-  longitude     Int
+  latitude      Float
+  longitude     Float
   posts         Post[]
 
   @@map("posts_location")

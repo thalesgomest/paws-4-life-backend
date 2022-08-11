@@ -18,3 +18,7 @@ export const insert = async (ongData: OngData) => {
 		console.log({ message: error.message });
 	}
 };
+
+export const getAll = async () => {
+	return prisma.ong.findMany();
+};

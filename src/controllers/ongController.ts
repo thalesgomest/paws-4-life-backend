@@ -7,3 +7,8 @@ export const registerOng = async (req: Request, res: Response) => {
 	await ongService.create(ongData);
 	res.status(201).json({ message: 'ong created' });
 };
+
+export const getOngs = async (req: Request, res: Response) => {
+	const ongs = await ongService.getAll();
+	res.status(200).json(ongs);
+};
