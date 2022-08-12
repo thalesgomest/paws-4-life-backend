@@ -28,8 +28,8 @@ CREATE TABLE "posts" (
 -- CreateTable
 CREATE TABLE "posts_location" (
     "id" SERIAL NOT NULL,
-    "latitude" INTEGER NOT NULL,
-    "longitude" INTEGER NOT NULL,
+    "latitude" DOUBLE PRECISION NOT NULL,
+    "longitude" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "posts_location_pkey" PRIMARY KEY ("id")
 );
@@ -39,9 +39,9 @@ CREATE TABLE "ongs" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "telephone" TEXT NOT NULL,
+    "telephone" TEXT,
     "address" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
+    "site" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "ongs_pkey" PRIMARY KEY ("id")

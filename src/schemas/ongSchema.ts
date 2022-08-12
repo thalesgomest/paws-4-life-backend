@@ -6,7 +6,7 @@ const regexTelephone =
 const ongBodySchema = Joi.object({
 	name: Joi.string().required(),
 	telephone: Joi.string().regex(regexTelephone).required(),
-	adress: Joi.string().required(),
+	address: Joi.string().required(),
 	email: Joi.string().email().required(),
 	site: Joi.string().required(),
 }).required();

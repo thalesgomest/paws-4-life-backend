@@ -55,7 +55,7 @@ model Ong {
   name        String
   email       String @unique
   telephone   String?
-  adress      String
+  address      String
   site        String?
   createdAt   DateTime @default(now())
 
