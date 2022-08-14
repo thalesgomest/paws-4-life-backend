@@ -5,10 +5,10 @@ const regexTelephone =
 
 const ongBodySchema = Joi.object({
 	name: Joi.string().required(),
-	telephone: Joi.string().regex(regexTelephone).required(),
+	telephone: Joi.string().regex(regexTelephone).allow(null, ''),
 	address: Joi.string().required(),
 	email: Joi.string().email().required(),
-	site: Joi.string().required(),
+	site: Joi.string().allow(null, ''),
 }).required();
 
 const ongSchema = Joi.object({

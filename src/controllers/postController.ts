@@ -5,7 +5,7 @@ import * as postService from '../services/postService.js';
 export const createPost = async (req: Request, res: Response) => {
 	const postBodyData = req.body as PostBodyData;
 	const { latitude, longitude } = postBodyData.location;
-	const { type, description, image } = postBodyData;
+	const { type, description, image, name } = postBodyData;
 	const { userId } = res.locals.userData;
 	const locationId = await postService.registerPostLocation({
 		latitude,
@@ -15,6 +15,7 @@ export const createPost = async (req: Request, res: Response) => {
 		type,
 		description,
 		image,
+		name,
 		locationId,
 		userId,
 	};

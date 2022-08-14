@@ -25,7 +25,8 @@ model Post {
   id            Int @id @default(autoincrement())
   type          PostType
   description   String
-  image         String
+  image         String?
+  name          String?
   locationId    Int
   location      PostLocation @relation(fields: [locationId], references: [id])
   userId        Int
@@ -36,15 +37,15 @@ model Post {
 }
 
 enum PostType {
-  rescue
-  lost
-  other
+  Rescue
+  Lost
+  Other
 }
 
 model PostLocation {
   id            Int @id @default(autoincrement())
-  latitude      Float
-  longitude     Float
+  latitude      Float?
+  longitude     Float?
   posts         Post[]
 
   @@map("posts_location")
@@ -55,7 +56,7 @@ model Ong {
   name        String
   email       String @unique
   telephone   String?
-  address      String
+  address     String
   site        String?
   createdAt   DateTime @default(now())
 

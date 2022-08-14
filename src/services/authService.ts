@@ -43,5 +43,5 @@ export const signIn = async (signInData: SignInData) => {
 		);
 	}
 	const { id, name } = user;
-	return { token: generateToken(id, name, email) };
+	return { token: generateToken(id, name, email), userId: id, name: name };
 };

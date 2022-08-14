@@ -2,15 +2,19 @@ import { PostCreateData, PostLocationData } from '../types/postInterface.js';
 import { prisma } from '../config/database.js';
 
 export const insert = async (postData: PostCreateData) => {
-	return prisma.post.create({
-		data: postData,
-	});
+	try {
+		return await prisma.post.create({
+			data: postData,
+		});
+	} catch (error) {
+		console.log({ message: error.message });
+	}
 };
 
 export const registerPostLocation = async (
 	postLocationData: PostLocationData
 ) => {
-	return prisma.postLocation.create({
+	return await prisma.postLocation.create({
 		data: postLocationData,
 	});
 };

@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "PostType" AS ENUM ('rescue', 'lost', 'other');
+CREATE TYPE "PostType" AS ENUM ('Rescue', 'Lost', 'Other');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -17,7 +17,8 @@ CREATE TABLE "posts" (
     "id" SERIAL NOT NULL,
     "type" "PostType" NOT NULL,
     "description" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
+    "image" TEXT,
+    "name" TEXT,
     "locationId" INTEGER NOT NULL,
     "userId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -28,8 +29,8 @@ CREATE TABLE "posts" (
 -- CreateTable
 CREATE TABLE "posts_location" (
     "id" SERIAL NOT NULL,
-    "latitude" DOUBLE PRECISION NOT NULL,
-    "longitude" DOUBLE PRECISION NOT NULL,
+    "latitude" DOUBLE PRECISION,
+    "longitude" DOUBLE PRECISION,
 
     CONSTRAINT "posts_location_pkey" PRIMARY KEY ("id")
 );
