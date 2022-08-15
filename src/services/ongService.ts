@@ -1,6 +1,6 @@
 import AppError from '../config/error.js';
 import { OngData } from '../types/ongInterface.js';
-import * as ongRepository from '../repositories/ongRepository.js';
+import ongRepository from '../repositories/ongRepository.js';
 
 export const create = async (ongData: OngData) => {
 	const { email } = ongData;

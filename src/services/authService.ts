@@ -1,10 +1,7 @@
 import { UserData, SignInData } from '../types/authInterface.js';
-import {
-	bcryptEncryptData,
-	bcryptCompareEncryptedData,
-} from '../utils/bcrypt.js';
+import bcrypt from '../utils/bcrypt.js';
 import { generateToken } from '../utils/JWT.js';
-import * as userRepository from '../repositories/userRepository.js';
+import userRepository from '../repositories/userRepository.js';
 import AppError from '../config/error.js';
 
 export const signUp = async (UserData: UserData) => {
@@ -18,7 +15,7 @@ export const signUp = async (UserData: UserData) => {
 			'Ensure that the email is unique'
 		);
 	}
-	const encryptedPassword = await bcryptEncryptData(password);
+	const encryptedPassword = bcrypt.EncryptData(password);
 	await userRepository.insert({ ...UserData, password: encryptedPassword });
 };
 
@@ -33,7 +30,10 @@ export const signIn = async (signInData: SignInData) => {
 			'Ensure that the data is correct'
 		);
 	}
-	const passwordIsValid = bcryptCompareEncryptedData(password, user.password);
+	const passwordIsValid = bcrypt.CompareEncryptedData(
+		password,
+		user.password
+	);
 	if (!passwordIsValid) {
 		throw new AppError(
 			'Invalid email or password',

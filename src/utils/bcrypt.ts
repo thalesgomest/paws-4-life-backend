@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt';
 
-const bcryptEncryptData = (data: string) => {
-	return bcrypt.hash(data, 10);
+const EncryptData = (data: string) => {
+	return bcrypt.hashSync(data, 10);
 };
 
-const bcryptCompareEncryptedData = (data: string, encryptedData: string) => {
+const CompareEncryptedData = (data: string, encryptedData: string) => {
 	return bcrypt.compareSync(data, encryptedData);
 };
 
-export { bcryptEncryptData, bcryptCompareEncryptedData };
+export default { EncryptData, CompareEncryptedData };

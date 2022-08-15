@@ -1,7 +1,7 @@
 import { PostCreateData, PostLocationData } from '../types/postInterface.js';
 import { prisma } from '../config/database.js';
 
-export const insert = async (postData: PostCreateData) => {
+const insert = async (postData: PostCreateData) => {
 	try {
 		return await prisma.post.create({
 			data: postData,
@@ -11,18 +11,22 @@ export const insert = async (postData: PostCreateData) => {
 	}
 };
 
-export const registerPostLocation = async (
-	postLocationData: PostLocationData
-) => {
+const registerPostLocation = async (postLocationData: PostLocationData) => {
 	return await prisma.postLocation.create({
 		data: postLocationData,
 	});
 };
 
-export const getAllPosts = async () => {
+const getAllPosts = async () => {
 	return prisma.post.findMany({
 		include: {
 			location: true,
 		},
 	});
+};
+
+export default {
+	insert,
+	registerPostLocation,
+	getAllPosts,
 };

@@ -1,7 +1,7 @@
 import { prisma } from '../config/database.js';
 import { OngData } from '../types/ongInterface.js';
 
-export const getByEmail = async (email: string) => {
+const getByEmail = async (email: string) => {
 	return prisma.ong.findUnique({
 		where: {
 			email,
@@ -9,7 +9,7 @@ export const getByEmail = async (email: string) => {
 	});
 };
 
-export const insert = async (ongData: OngData) => {
+const insert = async (ongData: OngData) => {
 	try {
 		const test = await prisma.ong.create({
 			data: ongData,
@@ -19,6 +19,12 @@ export const insert = async (ongData: OngData) => {
 	}
 };
 
-export const getAll = async () => {
+const getAll = async () => {
 	return prisma.ong.findMany();
+};
+
+export default {
+	getByEmail,
+	insert,
+	getAll,
 };
