@@ -22,6 +22,9 @@ const getAllPosts = async () => {
 		include: {
 			location: true,
 		},
+		orderBy: {
+			createdAt: 'desc',
+		},
 	});
 };
 
